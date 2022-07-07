@@ -1,20 +1,17 @@
-import React, { FC } from 'react';
-import { NavBar, TabBar } from 'antd-mobile'
+import React from 'react';
+import { NavBar} from 'antd-mobile'
 import {
   Route,
   Routes,
   MemoryRouter as Router,
 } from 'react-router-dom'
-// import styled from 'styled-components';
-
+import  './styles/App.scss'
 import Bottom from 'components/Bottom';
-import './styles/App.less'
-
 
 
 function App () {
   return (
-    <Router initialEntries={['/home']}>
+    <Router initialEntries={['/money']}>
       <div className="app">
         <div className="top">
           <NavBar>配合路由使用</NavBar>
