@@ -1,41 +1,38 @@
-import React from 'react';
-import { 
-  HashRouter as Router,
-  Routes,
+import React, { FC } from 'react';
+import { NavBar, TabBar } from 'antd-mobile'
+import {
   Route,
- } from 'react-router-dom';
-import styled from 'styled-components';
-import Nav from './components/Nav'
+  Routes,
+  MemoryRouter as Router,
+} from 'react-router-dom'
+// import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  height: 100hv;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`;
+import Bottom from 'components/Bottom';
+import './styles/App.less'
 
 
 
-function App() {
+function App () {
   return (
-    <Router>
-       <Wrapper>
-         <Main>
+    <Router initialEntries={['/home']}>
+      <div className="app">
+        <div className="top">
+          <NavBar>配合路由使用</NavBar>
+        </div>
+        <div className="body">
           <Routes>
-             <Route path="/tags" element={<Tags />} />
-             <Route path="/money"  element={<Money/>} />
-             <Route path="/statistics" element={<Statistics/>} />
-             <Route path="*" element={<NoMatch/>} />
+            <Route path='/tag' element={<Tags />}/>
+            <Route path='/money' element={<Money />} />
+            <Route path='/statistics' element={<Statistics />} />
+            <Route path='/me' element={<NoMatch />}/>
           </Routes>
-         </Main>
-         <Nav/>
-       </Wrapper>
-     </Router>
-   );
+        </div>
+        <div className="bottom">
+          <Bottom />
+        </div>
+      </div>
+    </Router>
+  )
 }
 
 function NoMatch() {
@@ -46,15 +43,15 @@ function NoMatch() {
 
 function Statistics() {
   return (
-    <h2>统计页</h2>
+    <div>统计页</div>
   );
 }
 
 function Tags() {
-  return <h2>标签页</h2>
+  return <div>标签页</div>
 }
 
 function Money() {
-  return <h2>记账页</h2>
+  return <div>记账页</div>
 }
 export default App;
