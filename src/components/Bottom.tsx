@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import {
-  AppOutline,
-  MessageOutline,
-  UnorderedListOutline,
+  TagOutline,
+  PieOutline,
+  BillOutline,
   UserOutline,
 } from 'antd-mobile-icons'
 import { TabBar } from 'antd-mobile'
@@ -24,17 +24,17 @@ const Bottom: FC = () => {
     {
       key: '/tag',
       title: '标签',
-      icon: <AppOutline />,
+      icon: <TagOutline />,
     },
     {
       key: '/money',
       title: '记账',
-      icon: <UnorderedListOutline />,
+      icon: <BillOutline />,
     },
     {
       key: '/statistics',
       title: '统计',
-      icon: <MessageOutline />,
+      icon: <PieOutline />,
     },
     {
       key: '/me',
@@ -42,7 +42,6 @@ const Bottom: FC = () => {
       icon: <UserOutline />,
     },
   ]
-
   return (
     <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
       {tabs.map(item => (

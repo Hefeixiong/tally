@@ -7,7 +7,10 @@ import {
 } from 'react-router-dom'
 import  './styles/App.scss'
 import Bottom from 'components/Bottom';
-
+import Money from './views/Money';
+import Statistics from './views/Statistics';
+import Tags from './views/Tags';
+import NoMatch from './views/NoMatch';
 
 function App () {
   return (
@@ -32,23 +35,4 @@ function App () {
   )
 }
 
-function NoMatch() {
-  return (
-    <div>页面不存在,你丫输错地址了吧！</div>
-  );
-}
-
-function Statistics() {
-  return (
-    <div>统计页</div>
-  );
-}
-
-function Tags() {
-  return <div>标签页</div>
-}
-
-function Money() {
-  return <div>记账页</div>
-}
 export default App;
