@@ -22,14 +22,14 @@ const Bottom: FC = () => {
 
   const tabs = [
     {
-      key: '/tag',
-      title: '标签',
-      icon: <TagOutline />,
-    },
-    {
       key: '/money',
       title: '记账',
       icon: <BillOutline />,
+    },
+    {
+      key: '/tag',
+      title: '标签',
+      icon: <TagOutline />,
     },
     {
       key: '/statistics',

@@ -10,7 +10,7 @@ import Bottom from 'components/Bottom';
 import Money from './views/Money';
 import Statistics from './views/Statistics';
 import Tags from './views/Tags';
-import NoMatch from './views/NoMatch';
+import Me from './views/Me';
 
 function App () {
   return (
@@ -24,7 +24,7 @@ function App () {
             <Route path='/tag' element={<Tags />}/>
             <Route path='/money' element={<Money />} />
             <Route path='/statistics' element={<Statistics />} />
-            <Route path='/me' element={<NoMatch />}/>
+            <Route path='/me' element={<Me />}/>
           </Routes>
         </div>
         <div className="bottom">
