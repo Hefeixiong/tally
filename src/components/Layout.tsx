@@ -6,9 +6,9 @@ import "../styles/layout.scss";
 function Layout(props: any) {
   return (
     <div className="app">
-      {/* <div className="top">
-        <NavBar>配合路由使用</NavBar>
-      </div> */}
+      <div className="top">
+        <NavBar backArrow={false}>{props.className}</NavBar>
+      </div>
       <div className="body">{props.children}</div>
       <div className="bottom">
         <Bottom />
