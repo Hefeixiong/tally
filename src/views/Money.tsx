@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Layout from "components/Layout";
 import { Tabs, Tag } from "antd-mobile";
 import NumberPad from "components/NumberPad";
+import NoteSection from "./money/NoteSection";
 
 const TagSection = styled.section`
   flex: 1;
@@ -27,6 +28,12 @@ function Money() {
           </Tabs.Tab>
         </Tabs>
       </TagSection>
+      <NoteSection
+        value={""}
+        onChange={function (value: string): void {
+          console.log("hi");
+        }}
+      />
       <NumberPad />
     </Layout>
   );
