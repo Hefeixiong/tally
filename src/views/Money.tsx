@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Layout from "components/Layout";
 import { Tabs, Tag } from "antd-mobile";
@@ -10,7 +10,19 @@ const TagSection = styled.section`
   background: white;
 `;
 
+type Category = "-" | "+";
+
 function Money() {
+  const [selected, setSelected] = useState({
+    tags: [] as string[],
+    note: "",
+    category: "-" as Category,
+    amount: 0,
+  });
+
+  const onChange = (obj: Partial<typeof selected>) => {
+    setSelected({ ...selected, ...obj });
+  };
   const onClick = () => {
     console.log("Hi");
   };
@@ -34,7 +46,11 @@ function Money() {
           console.log("hi");
         }}
       />
-      <NumberPad />
+      <NumberPad
+        value={selected.amount}
+        onChange={(amount) => onChange({ amount })}
+        onOk={() => {}}
+      />
     </Layout>
   );
 }
