@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "components/Layout";
 import { Tabs, Tag } from "antd-mobile";
-import NumberPad from "components/NumberPad";
+import NumberPad from "./money/NumberPad";
 import NoteSection from "./money/NoteSection";
 
 const TagSection = styled.section`
