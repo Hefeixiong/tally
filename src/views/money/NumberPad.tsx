@@ -10,7 +10,6 @@ type Props = {
 
 const NumberPad: React.FC<Props> = (props) => {
   const output = props.value.toString();
-  console.log(props);
   const setOutput = (output: string) => {
     let value;
     if (output.length > 16) {
@@ -24,7 +23,6 @@ const NumberPad: React.FC<Props> = (props) => {
   };
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
-    console.log(text);
     if (text === null) {
       return;
     }
@@ -38,7 +36,6 @@ const NumberPad: React.FC<Props> = (props) => {
       setOutput(generateOutput(text, output));
     }
   };
-  console.log(output);
   return (
     <Wrapper>
       <div className="output">{output}</div>
