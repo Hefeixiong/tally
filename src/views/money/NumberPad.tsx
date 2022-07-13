@@ -9,9 +9,7 @@ type Props = {
 };
 
 const NumberPad: React.FC<Props> = (props) => {
-  // const output = props.value.toString();
   const [output, _setOutput] = useState(props.value.toString());
-  console.log(useState(props));
   const setOutput = (output: string) => {
     let newOutput: string;
     if (output.length > 16) {
