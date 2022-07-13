@@ -1,5 +1,4 @@
-import { Tabs, Tag } from "antd-mobile";
-import Item from "antd-mobile/es/components/dropdown/item";
+import { Tabs } from "antd-mobile";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -7,31 +6,28 @@ const Wrapper = styled.section`
   flex: 1;
   background: white;
 `;
-
-function Tags() {
-  const category = [
+type Props = {
+  value: "-" | "+";
+  onChange: (value: "-" | "+") => void;
+};
+const Tags: React.FC<Props> = (props) => {
+  const categoryMap = [
     { key: "-", title: "支出" },
     { key: "+", title: "收入" },
   ];
-  const [activeIndex, setActiveIndex] = useState(0);
-  const onClick = () => {
-    console.log("Hi");
-  };
   return (
     <Wrapper>
       <Tabs
-        activeKey={category[activeIndex].key}
         onChange={(key) => {
-          const index = category.findIndex((item) => item.key === key);
-          setActiveIndex(index);
+          props.onChange(key as "-" | "+");
         }}
       >
-        {category.map((item) => (
+        {categoryMap.map((item) => (
           <Tabs.Tab title={item.title} key={item.key} />
         ))}
       </Tabs>
     </Wrapper>
   );
-}
+};
 
 export default Tags;

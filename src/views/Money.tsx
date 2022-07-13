@@ -13,13 +13,15 @@ function Money() {
     category: "-" as Category,
     amount: 0,
   });
-
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({ ...selected, ...obj });
   };
   return (
     <Layout className="money">
-      <Tags />
+      <Tags
+        value={selected.category}
+        onChange={(category) => onChange({ category })}
+      />
       <NoteSection
         value={""}
         onChange={function (value: string): void {
