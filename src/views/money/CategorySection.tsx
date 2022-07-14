@@ -1,5 +1,5 @@
 import { Tabs } from "antd-mobile";
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -10,7 +10,7 @@ type Props = {
   value: "-" | "+";
   onChange: (value: "-" | "+") => void;
 };
-const Tags: React.FC<Props> = (props) => {
+const CategorySection: React.FC<Props> = (props) => {
   const categoryMap = [
     { key: "-", title: "支出" },
     { key: "+", title: "收入" },
@@ -30,4 +30,4 @@ const Tags: React.FC<Props> = (props) => {
   );
 };
 
-export default Tags;
+export default CategorySection;

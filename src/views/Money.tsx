@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Layout from "components/Layout";
 import NumberPad from "./money/NumberPad";
 import NoteSection from "./money/NoteSection";
-import Tags from "./money/TagSection";
+import CategorySection from "./money/CategorySection";
+import { TagsSection } from "./money/TagsSection";
 
 type Category = "-" | "+";
 
@@ -18,15 +19,17 @@ function Money() {
   };
   return (
     <Layout className="money">
-      <Tags
+      <CategorySection
         value={selected.category}
         onChange={(category) => onChange({ category })}
       />
+      <TagsSection
+        value={selected.tags}
+        onChange={(tags) => onChange({ tags })}
+      />
       <NoteSection
-        value={""}
-        onChange={function (value: string): void {
-          console.log("hi");
-        }}
+        value={selected.note}
+        onChange={(note) => onChange({ note })}
       />
       <NumberPad
         value={selected.amount}
