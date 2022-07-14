@@ -18,7 +18,7 @@ function Money() {
     setSelected({ ...selected, ...obj });
   };
   return (
-    <Layout className="money">
+    <Layout className="记账">
       <CategorySection
         value={selected.category}
         onChange={(category) => onChange({ category })}
