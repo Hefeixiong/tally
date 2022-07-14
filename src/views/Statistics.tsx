@@ -9,7 +9,7 @@ function Statistics() {
   return (
     <Layout className="统计">
       <Card title="本月收支" onClick={onClick}>
-        内容 内容内容内容内容内容内容内容内容内容内容内容内容内容
+        ¥ 12222
       </Card>
     </Layout>
   );

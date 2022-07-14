@@ -37,6 +37,13 @@ const Space = styled.div`
 
 function Tags() {
   const { tags, setTags } = useTags();
+  const onAdd = () => {
+    const addTag = window.prompt("新增标签");
+    console.log(addTag);
+    if (addTag !== null && addTag !== "") {
+      setTags([...tags, addTag]);
+    }
+  };
   return (
     <Layout className="标签">
       <TagList>
@@ -48,7 +55,7 @@ function Tags() {
         <Space />
         <Space />
         <Space />
-        <Button>新增标签</Button>
+        <Button onClick={onAdd}>新增标签</Button>
       </Center>
     </Layout>
   );
