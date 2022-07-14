@@ -8,7 +8,7 @@ import Me from "./views/Me";
 
 function App() {
   return (
-    <Router initialEntries={["/money"]}>
+    <Router initialEntries={["/tag"]}>
       <Routes>
         <Route path="/tag" element={<Tags />} />
         <Route path="/money" element={<Money />} />

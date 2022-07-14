@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useTags } from "views/tags/useTags";
+import { useTags } from "hooks/useTags";
 
 const Wrapper = styled.section`
   background: #ffffff;
