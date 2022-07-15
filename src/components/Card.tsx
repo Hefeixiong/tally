@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 
 type Props = {
   title: string;
-  content: string[];
+  content: { id: number; name: string }[];
 };
 
 const Card: React.FC<Props> = (props) => {
@@ -45,8 +45,8 @@ const Card: React.FC<Props> = (props) => {
       </div>
       <ol className="content">
         {props.content.map((item) => (
-          <li key={item}>
-            <div>{item}</div>
+          <li key={item.id}>
+            <div>{item.name}</div>
             <div>123.01</div>
           </li>
         ))}

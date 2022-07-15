@@ -41,7 +41,7 @@ function Tags() {
     <Layout className="标签">
       <TagList>
         {tags.map((tag) => (
-          <li key={tag}>{tag}</li>
+          <li key={tag.id}>{tag.name}</li>
         ))}
       </TagList>
       <Center>

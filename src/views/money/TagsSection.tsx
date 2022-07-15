@@ -40,20 +40,14 @@ type Props = {
 };
 
 const TagsSection: React.FC<Props> = (props) => {
-  const { tags, setTags } = useTags();
+  const { tags, setTags, addTag } = useTags();
   const selectedTags = props.value;
-  const onAddTag = () => {
-    const tagName = window.prompt("新标签名字");
-    if (tagName !== null) {
-      setTags([...tags, tagName]);
-    }
-  };
-  const onToggleTag = (tag: string) => {
-    const index = selectedTags.indexOf(tag);
-    if (index >= 0) {
-      props.onChange(selectedTags.filter((t) => t !== tag));
+
+  const onToggleTag = (tag: { id: number; name: string }) => {
+    if (tag.id >= 0) {
+      props.onChange(selectedTags.filter((t) => t !== tag.name));
     } else {
-      props.onChange([...selectedTags, tag]);
+      props.onChange([...selectedTags, tag.name]);
     }
   };
   const getClass = (tag: string) =>
@@ -63,17 +57,17 @@ const TagsSection: React.FC<Props> = (props) => {
       <ol>
         {tags.map((tag) => (
           <li
-            key={tag}
+            key={tag.id}
             onClick={() => {
               onToggleTag(tag);
             }}
-            className={getClass(tag)}
+            className={getClass(tag.name)}
           >
-            {tag}
+            {tag.name}
           </li>
         ))}
       </ol>
-      <button onClick={onAddTag}>新增标签</button>
+      <button onClick={addTag}>新增标签</button>
     </Wrapper>
   );
 };
