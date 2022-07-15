@@ -6,7 +6,8 @@ const useTags = () => {
 
   //组件挂载时存入tags数据
   useEffect(() => {
-    let localTags = JSON.parse(window.localStorage.getItem("tag") || "[]");
+    let localTags = JSON.parse(window.localStorage.getItem("tags") || "[]");
+    console.log(localTags);
     if (localTags.length === 0) {
       localTags = [
         { id: 1, name: "衣" },
