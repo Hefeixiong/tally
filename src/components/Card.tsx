@@ -1,4 +1,3 @@
-import { useTags } from "hooks/useTags";
 import React from "react";
 import styled from "styled-components";
 
@@ -10,51 +9,48 @@ const Wrapper = styled.div`
   padding: 0 12px;
   border-radius: 8px;
   flex-direction: column;
-  > .wrapper {
-    padding: 12px 0;
+  > .title {
+    line-height: 32px;
+    padding: 12px 16px 12px 0;
+    border-bottom: 1px solid #d5d5d9;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: stretch;
-    > .title {
+  }
+  > .content {
+    padding-bottom: 12px;
+    > li {
       line-height: 32px;
       padding: 12px 16px 12px 0;
-      border-bottom: 1px solid #d5d5d9;
+      border-bottom: 0.5px solid #eee;
       display: flex;
       justify-content: space-between;
       align-items: stretch;
     }
-    > ol {
-      padding-bottom: 12px;
-      > li {
-        line-height: 32px;
-        padding: 12px 16px 12px 0;
-        border-bottom: 0.5px solid #eee;
-        display: flex;
-        justify-content: space-between;
-        align-items: stretch;
-      }
-    }
   }
 `;
 
-const Card = () => {
-  const { tags } = useTags();
+type Props = {
+  title: string;
+  content: string[];
+};
+
+const Card: React.FC<Props> = (props) => {
+  const title = props.title;
   return (
     <Wrapper>
-      <div className="pay wrapper">
-        <div className="title">
-          <div>支出情况</div>
-          <div>¥1300</div>
-        </div>
-        <ol className="content">
-          {tags.map((tag) => (
-            <li key={tag}>
-              <div>{tag}</div>
-              <div>123.01</div>
-            </li>
-          ))}
-        </ol>
+      <div className="title">
+        <div>{title}</div>
+        <div>¥1300</div>
       </div>
+      <ol className="content">
+        {props.content.map((item) => (
+          <li key={item}>
+            <div>{item}</div>
+            <div>123.01</div>
+          </li>
+        ))}
+      </ol>
     </Wrapper>
   );
 };

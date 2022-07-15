@@ -13,7 +13,8 @@ function Statistics() {
   return (
     <Layout className="统计">
       <CardSection />
-      <Card></Card>
+      <Card title="支出情况" content={tags}></Card>
+      <Card title="收入情况" content={tags}></Card>
     </Layout>
   );
 }
