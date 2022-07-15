@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useUpdate } from "./useUpdate";
 
 const useTags = () => {
   const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
@@ -16,6 +17,10 @@ const useTags = () => {
     }
     setTags(localTags);
   }, []);
+
+  useUpdate(() => {
+    window.localStorage.setItem("tags", JSON.stringify(tags));
+  }, [tags]);
 
   //新增标签
   const addTag = () => {
