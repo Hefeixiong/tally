@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 const useTags = () => {
-  const arr = ["yi", "b"];
   const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
 
-  //初始化时存入tags数据
+  //组件挂载时存入tags数据
   useEffect(() => {
     let localTags = JSON.parse(window.localStorage.getItem("tag") || "[]");
     if (localTags.length === 0) {
@@ -15,6 +14,7 @@ const useTags = () => {
         { id: 4, name: "行" },
       ];
     }
+    setTags(localTags);
   }, []);
 
   //新增标签
