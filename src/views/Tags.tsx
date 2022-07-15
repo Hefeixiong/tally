@@ -5,6 +5,8 @@ import { useTags } from "../hooks/useTags";
 
 const TagList = styled.ol`
   font-size: 16px;
+  margin: 8px 16px;
+  border-radius: 8px;
   background: white;
   > li {
     //#e5e5e7
