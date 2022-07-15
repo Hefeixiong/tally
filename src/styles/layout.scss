@@ -2,6 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+
 }
 
 .top {
@@ -16,6 +17,8 @@
   background: #efefef;
   flex-direction: column;
   align-items: stretch;
+  overflow-y: scroll;
+
 }
 
 .bottom {
