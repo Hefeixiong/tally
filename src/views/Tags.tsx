@@ -21,7 +21,7 @@ const Button = styled.button`
   font-size: 18px;
   border: none;
   padding: 8px 12px;
-  background: #f60;
+  background: #1677ff;
   border-radius: 4px;
   color: white;
 `;
@@ -36,14 +36,7 @@ const Space = styled.div`
 `;
 
 function Tags() {
-  const { tags, setTags } = useTags();
-  const onAdd = () => {
-    const addTag = window.prompt("新增标签");
-    console.log(addTag);
-    if (addTag !== null && addTag !== "") {
-      setTags([...tags, addTag]);
-    }
-  };
+  const { tags, addTag } = useTags();
   return (
     <Layout className="标签">
       <TagList>
@@ -55,7 +48,7 @@ function Tags() {
         <Space />
         <Space />
         <Space />
-        <Button onClick={onAdd}>新增标签</Button>
+        <Button onClick={addTag}>新增标签</Button>
       </Center>
     </Layout>
   );
