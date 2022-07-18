@@ -35,23 +35,24 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: string[];
-  onChange: (selected: string[]) => void;
+  value: number[];
+  onChange: (selected: number[]) => void;
 };
 
 const TagsSection: React.FC<Props> = (props) => {
-  const { tags, setTags, addTag } = useTags();
-  const selectedTags = props.value;
+  const { tags, addTag } = useTags();
+  const selectedTagIds = props.value;
 
-  const onToggleTag = (tag: { id: number; name: string }) => {
-    if (tag.id >= 0) {
-      props.onChange(selectedTags.filter((t) => t !== tag.name));
+  const onToggleTag = (tagId: number) => {
+    const index = selectedTagIds.indexOf(tagId);
+    if (index >= 0) {
+      props.onChange(selectedTagIds.filter((t) => t !== tagId));
     } else {
-      props.onChange([...selectedTags, tag.name]);
+      props.onChange([...selectedTagIds, tagId]);
     }
   };
-  const getClass = (tag: string) =>
-    selectedTags.indexOf(tag) >= 0 ? "selected" : " ";
+  const getClass = (tagId: number) =>
+    selectedTagIds.indexOf(tagId) >= 0 ? "selected" : " ";
   return (
     <Wrapper>
       <ol>
@@ -59,9 +60,9 @@ const TagsSection: React.FC<Props> = (props) => {
           <li
             key={tag.id}
             onClick={() => {
-              onToggleTag(tag);
+              onToggleTag(tag.id);
             }}
-            className={getClass(tag.name)}
+            className={getClass(tag.id)}
           >
             {tag.name}
           </li>
