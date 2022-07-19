@@ -4,33 +4,26 @@ import NumberPad from "./money/NumberPad";
 import NoteSection from "./money/NoteSection";
 import CategorySection from "./money/CategorySection";
 import { TagsSection } from "./money/TagsSection";
-import { Toast } from "antd-mobile";
+import { useRecords } from "hooks/useRecords";
 
 type Category = "-" | "+";
 
+const defaultItem = {
+  tagIds: [] as number[],
+  note: "",
+  category: "-" as Category,
+  amount: 0,
+};
 function Money() {
-  const [selected, setSelected] = useState({
-    tagIds: [] as number[],
-    note: "",
-    category: "-" as Category,
-    amount: 0,
-  });
+  const [selected, setSelected] = useState(defaultItem);
+  const { records, addRecord } = useRecords();
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({ ...selected, ...obj });
   };
 
-  const onOk = () => {
-    if (
-      selected.tagIds === [] ||
-      selected.note === "" ||
-      selected.amount === 0
-    ) {
-      console.log("123");
-      Toast.show("请输入完整的信息");
-    } else {
-      window.localStorage.setItem("records", JSON.stringify(selected));
-      Toast.show("已添加");
-      console.log("456");
+  const submit = () => {
+    if (addRecord(selected)) {
+      setSelected(defaultItem);
     }
   };
   return (
@@ -50,7 +43,7 @@ function Money() {
       <NumberPad
         value={selected.amount}
         onChange={(amount) => onChange({ amount })}
-        onOk={onOk}
+        onOk={submit}
       />
     </Layout>
   );

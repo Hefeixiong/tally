@@ -32,6 +32,7 @@ export const useRecords = () => {
     }
     const record = { ...newRecord, createdAt: new Date().toISOString() };
     setRecords([...records, record]);
+    Toast.show("添加成功");
     return true;
   };
   return { records, addRecord };
