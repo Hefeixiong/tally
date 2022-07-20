@@ -1,3 +1,4 @@
+import { useRecords } from "hooks/useRecords";
 import React from "react";
 import styled from "styled-components";
 
@@ -32,6 +33,7 @@ const Wrapper = styled.div`
 
 type Props = {
   title: string;
+  category: "+" | "-";
   content: { id: number; name: string }[];
 };
 
