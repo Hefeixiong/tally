@@ -1,4 +1,4 @@
-import { useRecords } from "hooks/useRecords";
+import { RecordItem } from "hooks/useRecords";
 import React from "react";
 import styled from "styled-components";
 
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   }
   > .content {
     padding-bottom: 12px;
-    > li {
+    > div > li {
       line-height: 32px;
       padding: 12px 16px 12px 0;
       border-bottom: 0.5px solid #eee;
@@ -32,26 +32,46 @@ const Wrapper = styled.div`
 `;
 
 type Props = {
-  title: string;
-  category: "+" | "-";
-  content: { id: number; name: string }[];
+  category: "-" | "+";
+  tags: { id: number; name: string }[];
+  recordsList: RecordItem[];
 };
-
 const Card: React.FC<Props> = (props) => {
-  const title = props.title;
+  let title = "";
+  let sum = 0;
+  props.recordsList
+    .filter((r) => r.category === props.category)
+    .map((t) => {
+      sum += t.amount;
+    });
+  const getName = (id: number) => {
+    const tag = props.tags.filter((t) => t.id === id)[0];
+    return tag ? tag.name : "";
+  };
+  const getTitle = () => {
+    return props.category === "-" ? (title = "支出情况") : (title = "收入情况");
+  };
   return (
     <Wrapper>
       <div className="title">
-        <div>{title}</div>
-        <div>¥1300</div>
+        <div>{getTitle()}</div>
+        <div>{"¥" + sum}</div>
       </div>
       <ol className="content">
-        {props.content.map((item) => (
-          <li key={item.id}>
-            <div>{item.name}</div>
-            <div>123.01</div>
-          </li>
-        ))}
+        {props.recordsList
+          .filter((r) => r.category === props.category)
+          .map((item) => {
+            return (
+              <div key={item.amount}>
+                {item.tagIds.map((tagId) => (
+                  <li key={tagId}>
+                    <div>{getName(tagId)}</div>
+                    <div>{item.amount}</div>
+                  </li>
+                ))}
+              </div>
+            );
+          })}
       </ol>
     </Wrapper>
   );

@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from "react";
-import CategorySection from "./money/CategorySection";
+import CategorySection from "../money/CategorySection";
 import styled from "styled-components";
-import { RecordItem, useRecords } from "../hooks/useRecords";
-import { useTags } from "../hooks/useTags";
+import { RecordItem, useRecords } from "../../hooks/useRecords";
+import { useTags } from "../../hooks/useTags";
 import Layout from "components/Layout";
 import day from "dayjs";
 
