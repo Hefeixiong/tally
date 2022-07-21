@@ -10,7 +10,7 @@ function Statistics() {
   const { records } = useRecords();
   return (
     <Layout className="统计">
-      <CardSection />
+      {/* <CardSection /> */}
       <Card category="-" recordsList={records} tags={tags}></Card>
       <Card category="+" recordsList={records} tags={tags}></Card>
     </Layout>

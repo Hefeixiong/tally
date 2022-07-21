@@ -15,6 +15,7 @@ const Item = styled.div`
   justify-content: space-between;
   background: white;
   font-size: 18px;
+  border-radius: 8px;
   line-height: 20px;
   padding: 10px 16px;
   > .note {
@@ -43,14 +44,12 @@ function Me() {
     }
     hash[key].push(r);
   });
-
   const array = Object.entries(hash).sort((a, b) => {
     if (a[0] === b[0]) return 0;
     if (a[0] > b[0]) return -1;
     if (a[0] < b[0]) return 1;
     return 0;
   });
-
   return (
     <Layout>
       <CategoryWrapper>

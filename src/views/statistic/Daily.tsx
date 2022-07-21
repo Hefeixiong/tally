@@ -15,6 +15,7 @@ const Item = styled.div`
   justify-content: space-between;
   background: white;
   font-size: 18px;
+  border-radius: 8px;
   line-height: 20px;
   padding: 10px 16px;
   > .note {

@@ -1,6 +1,7 @@
 import { RecordItem } from "hooks/useRecords";
 import React from "react";
 import styled from "styled-components";
+import day from "dayjs";
 
 const Wrapper = styled.div`
   font-size: 16px;
@@ -37,30 +38,38 @@ type Props = {
   recordsList: RecordItem[];
 };
 const Card: React.FC<Props> = (props) => {
-  let title = "";
   let sum = 0;
-  props.recordsList
-    .filter((r) => r.category === props.category)
-    .map((t) => {
-      sum += t.amount;
-    });
+  //过滤为“-”的数据
+  const monthsRecords = props.recordsList
+    .filter((t) => t.category === props.category)
+    .filter(
+      //过滤本月数据
+      (t) =>
+        day(t.createdAt).format("YYYY年MM月") ===
+        day(new Date()).format("YYYY年MM月")
+    );
+  //计算当月的总金额
+  monthsRecords.map((r) => (sum += r.amount));
+  console.log(monthsRecords);
+
   const getName = (id: number) => {
     const tag = props.tags.filter((t) => t.id === id)[0];
     return tag ? tag.name : "";
   };
-  const getTitle = () => {
-    return props.category === "-" ? (title = "支出情况") : (title = "收入情况");
-  };
+
   return (
     <Wrapper>
       <div className="title">
-        <div>{getTitle()}</div>
+        <div>{props.category === "-" ? "支出情况" : "收入情况"}</div>
         <div>{"¥" + sum}</div>
       </div>
       <ol className="content">
-        {props.recordsList
-          .filter((r) => r.category === props.category)
-          .map((item) => {
+        {monthsRecords.length < 1 ? (
+          <div>
+            <li>没有内容</li>
+          </div>
+        ) : (
+          monthsRecords.map((item) => {
             return (
               <div key={item.amount}>
                 {item.tagIds.map((tagId) => (
@@ -71,7 +80,8 @@ const Card: React.FC<Props> = (props) => {
                 ))}
               </div>
             );
-          })}
+          })
+        )}
       </ol>
     </Wrapper>
   );
