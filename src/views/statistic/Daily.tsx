@@ -30,7 +30,7 @@ const Header = styled.h3`
   padding: 10px 16px;
 `;
 
-function Me() {
+function Daily() {
   const [category, setCategory] = useState<"-" | "+">("-");
   const { records } = useRecords();
   const { getName } = useTags();
@@ -90,4 +90,4 @@ function Me() {
   );
 }
 
-export default Me;
+export { Daily };

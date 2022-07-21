@@ -1,8 +1,9 @@
-import { RecordItem } from "hooks/useRecords";
+import { useRecords } from "hooks/useRecords";
 import React, { useState } from "react";
 import styled from "styled-components";
 import day from "dayjs";
 import CategorySection from "../money/CategorySection";
+import { useTags } from "hooks/useTags";
 
 const Wrapper = styled.div`
   font-size: 16px;
@@ -46,15 +47,13 @@ const Header = styled.h3`
   padding: 10px 16px;
 `;
 
-type Props = {
-  tags: { id: number; name: string }[];
-  recordsList: RecordItem[];
-};
-const Months: React.FC<Props> = (props) => {
+const Months = () => {
   const [category, setCategory] = useState<"-" | "+">("-");
+  const { getName } = useTags();
+  const { records } = useRecords();
   let sum = 0;
   //过滤为“-”的数据
-  const monthsRecords = props.recordsList
+  const monthsRecords = records
     .filter((t) => t.category === category)
     .filter(
       //过滤本月数据
@@ -64,12 +63,6 @@ const Months: React.FC<Props> = (props) => {
     );
   //计算当月的总金额
   monthsRecords.map((r) => (sum += r.amount));
-
-  const getName = (id: number) => {
-    const tag = props.tags.filter((t) => t.id === id)[0];
-    return tag ? tag.name : "";
-  };
-
   return (
     <div>
       <CategorySection
