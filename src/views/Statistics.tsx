@@ -1,8 +1,7 @@
 import React from "react";
 import Layout from "components/Layout";
 import { useTags } from "hooks/useTags";
-import { CardSection } from "./statistic/CardSection";
-import { Card } from "components/Card";
+import { Months } from "./statistic/Months";
 import { useRecords } from "hooks/useRecords";
 
 function Statistics() {
@@ -10,9 +9,7 @@ function Statistics() {
   const { records } = useRecords();
   return (
     <Layout className="统计">
-      {/* <CardSection /> */}
-      <Card category="-" recordsList={records} tags={tags}></Card>
-      <Card category="+" recordsList={records} tags={tags}></Card>
+      <Months recordsList={records} tags={tags}></Months>
     </Layout>
   );
 }
