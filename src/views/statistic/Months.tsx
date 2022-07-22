@@ -5,6 +5,10 @@ import day from "dayjs";
 import CategorySection from "../money/CategorySection";
 import { useTags } from "hooks/useTags";
 
+const Div = styled.div`
+  background: #efefef;
+  height: 100vh;
+`;
 const Wrapper = styled.div`
   font-size: 16px;
   background: white;
@@ -64,7 +68,7 @@ const Months = () => {
   //计算当月的总金额
   monthsRecords.map((r) => (sum += r.amount));
   return (
-    <div>
+    <Div>
       <CategorySection
         value={category}
         onChange={(value) => setCategory(value)}
@@ -97,8 +101,8 @@ const Months = () => {
           )}
         </ol>
       </Wrapper>
-    </div>
+    </Div>
   );
 };
 
-export { Months };
+export default Months;
