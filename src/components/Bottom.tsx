@@ -1,10 +1,5 @@
 import React, { FC } from "react";
-import {
-  TagOutline,
-  PieOutline,
-  BillOutline,
-  UserOutline,
-} from "antd-mobile-icons";
+import { TagOutline, PieOutline, BillOutline } from "antd-mobile-icons";
 import { TabBar } from "antd-mobile";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -12,7 +7,6 @@ const Bottom: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
-  console.log(location);
 
   const setRouteActive = (value: string) => {
     navigate(value);

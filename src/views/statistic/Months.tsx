@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   font-size: 16px;
   background: white;
   display: flex;
+  margin: 8px 16px;
   padding: 0 12px;
   border-radius: 8px;
   flex-direction: column;
