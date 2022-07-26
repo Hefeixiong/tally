@@ -34,11 +34,11 @@ const Bottom: FC = () => {
       title: "统计",
       icon: <PieOutline />,
     },
-    {
-      key: "/me",
-      title: "个人中心",
-      icon: <UserOutline />,
-    },
+    // {
+    //   key: "/me",
+    //   title: "个人中心",
+    //   icon: <UserOutline />,
+    // },
   ];
   return (
     <TabBar activeKey={pathname} onChange={(value) => setRouteActive(value)}>
