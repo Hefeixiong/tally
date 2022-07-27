@@ -36,6 +36,7 @@ const Wrapper = styled.section`
 
 type Props = {
   value: number[];
+  category: "-" | "+";
   onChange: (selected: number[]) => void;
 };
 
@@ -56,19 +57,27 @@ const TagsSection: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       <ol>
-        {tags.map((tag) => (
-          <li
-            key={tag.id}
-            onClick={() => {
-              onToggleTag(tag.id);
-            }}
-            className={getClass(tag.id)}
-          >
-            {tag.name}
-          </li>
-        ))}
+        {tags
+          .filter((t) => t.category === props.category)
+          .map((tag) => (
+            <li
+              key={tag.id}
+              onClick={() => {
+                onToggleTag(tag.id);
+              }}
+              className={getClass(tag.id)}
+            >
+              {tag.name}
+            </li>
+          ))}
       </ol>
-      <button onClick={addTag}>新增标签</button>
+      <button
+        onClick={() => {
+          addTag(props.category);
+        }}
+      >
+        新增标签
+      </button>
     </Wrapper>
   );
 };

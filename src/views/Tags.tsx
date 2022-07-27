@@ -44,23 +44,33 @@ function Tags() {
   console.log(tags);
   return (
     <Layout className="标签">
-      <CategorySection
-        value={category}
-        onChange={(value) => {
-          setCategory(value);
-        }}
-      />
-      <TagList>
-        {tags.map((tag) => (
-          <li key={tag.id}>{tag.name}</li>
-        ))}
-      </TagList>
-      <Center>
-        <Space />
-        <Space />
-        <Space />
-        <Button onClick={addTag}>新增标签</Button>
-      </Center>
+      <div>
+        <CategorySection
+          value={category}
+          onChange={(value) => {
+            setCategory(value);
+          }}
+        />
+        <TagList>
+          {tags
+            .filter((t) => t.category === category)
+            .map((tag) => (
+              <li key={tag.id}>{tag.name}</li>
+            ))}
+        </TagList>
+        <Center>
+          <Space />
+          <Space />
+          <Space />
+          <Button
+            onClick={() => {
+              addTag(category);
+            }}
+          >
+            新增标签
+          </Button>
+        </Center>
+      </div>
     </Layout>
   );
 }

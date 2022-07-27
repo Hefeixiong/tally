@@ -3,17 +3,19 @@ import React, { useEffect, useState } from "react";
 import { useUpdate } from "./useUpdate";
 
 const useTags = () => {
-  const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
+  const [tags, setTags] = useState<
+    { id: number; name: string; category: "-" | "+" }[]
+  >([]);
 
   //组件挂载时存入tags数据
   useEffect(() => {
     let localTags = JSON.parse(window.localStorage.getItem("tags") || "[]");
     if (localTags.length === 0) {
       localTags = [
-        { id: createId(), name: "衣" },
-        { id: createId(), name: "食" },
-        { id: createId(), name: "住" },
-        { id: createId(), name: "行" },
+        { id: createId(), name: "衣", category: "-" },
+        { id: createId(), name: "食", category: "-" },
+        { id: createId(), name: "住", category: "-" },
+        { id: createId(), name: "行", category: "-" },
       ];
     }
     setTags(localTags);
@@ -24,10 +26,10 @@ const useTags = () => {
   }, [tags]);
 
   //新增标签
-  const addTag = () => {
+  const addTag = (category: "-" | "+") => {
     const addTag = window.prompt("新增标签");
     if (addTag !== null && addTag !== "") {
-      setTags([...tags, { id: createId(), name: addTag }]);
+      setTags([...tags, { id: createId(), name: addTag, category }]);
     }
   };
 
