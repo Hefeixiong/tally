@@ -1,7 +1,8 @@
 import Layout from "components/Layout";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useTags } from "../hooks/useTags";
+import CategorySection from "./money/CategorySection";
 
 const TagList = styled.ol`
   font-size: 16px;
@@ -38,9 +39,17 @@ const Space = styled.div`
 `;
 
 function Tags() {
+  const [category, setCategory] = useState<"-" | "+">("-");
   const { tags, addTag } = useTags();
+  console.log(tags);
   return (
     <Layout className="标签">
+      <CategorySection
+        value={category}
+        onChange={(value) => {
+          setCategory(value);
+        }}
+      />
       <TagList>
         {tags.map((tag) => (
           <li key={tag.id}>{tag.name}</li>
