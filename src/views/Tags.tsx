@@ -41,7 +41,6 @@ const Space = styled.div`
 function Tags() {
   const [category, setCategory] = useState<"-" | "+">("-");
   const { tags, addTag } = useTags();
-  console.log(tags);
   return (
     <Layout className="标签">
       <div>

@@ -16,6 +16,8 @@ const useTags = () => {
         { id: createId(), name: "食", category: "-" },
         { id: createId(), name: "住", category: "-" },
         { id: createId(), name: "行", category: "-" },
+        { id: createId(), name: "工资", category: "+" },
+        { id: createId(), name: "公积金", category: "+" },
       ];
     }
     setTags(localTags);

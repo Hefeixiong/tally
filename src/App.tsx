@@ -10,10 +10,10 @@ import Months from "./views/statistic/Months";
 function App() {
   return (
     <Routes>
-      <Route path="/">
+      <Route path="/" element={<Money />}>
         <Route path="tag" element={<Tags />} />
         <Route path="money" element={<Money />} />
-        <Route path="statistics" caseSensitive element={<Statistics />}>
+        <Route path="statistics" element={<Statistics />}>
           <Route path="months" element={<Months />} />
         </Route>
         <Route path="me" element={<Me />} />

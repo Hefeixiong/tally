@@ -16,7 +16,7 @@ const defaultItem = {
 };
 function Money() {
   const [selected, setSelected] = useState(defaultItem);
-  const { records, addRecord } = useRecords();
+  const { addRecord } = useRecords();
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({ ...selected, ...obj });
   };
