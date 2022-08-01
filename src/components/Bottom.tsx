@@ -14,7 +14,7 @@ const Bottom: FC = () => {
 
   const tabs = [
     {
-      key: "/money",
+      key: "/",
       title: "记账",
       icon: <BillOutline />,
     },
