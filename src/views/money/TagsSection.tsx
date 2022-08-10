@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useTags } from "hooks/useTags";
 
@@ -52,7 +52,13 @@ const TagsSection: React.FC<Props> = (props) => {
       props.onChange([...selectedTagIds, tagId]);
     }
   };
-  console.log(selectedTagIds);
+  console.log(selectedTagIds, +"1");
+
+  useEffect(() => {
+    console.log("selectedTagIds changed");
+  }, [selectedTagIds]);
+  console.log(selectedTagIds, +"2");
+
   const getClass = (tagId: number) =>
     selectedTagIds.indexOf(tagId) >= 0 ? "selected" : " ";
   return (
