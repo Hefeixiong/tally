@@ -6,6 +6,7 @@ import CategorySection from "../money/CategorySection";
 import { useTags } from "hooks/useTags";
 
 const Div = styled.div`
+  height: 100vh;
   background: #efefef;
 `;
 const Wrapper = styled.div`

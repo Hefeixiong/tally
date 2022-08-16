@@ -13,11 +13,10 @@ function App() {
       <Route path="/">
         <Route path="tag" element={<Tags />} />
         <Route index element={<Money />} />
-        <Route path="statistics/*" element={<Statistics />}>
-          <Route path="months" element={<Months />} />
-        </Route>
+        <Route path="statistics/*" element={<Statistics />}></Route>
         <Route path="me" element={<Me />} />
       </Route>
+      <Route path="/statistics/months" element={<Months />} />
     </Routes>
   );
 }
