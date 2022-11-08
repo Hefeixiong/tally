@@ -6,6 +6,7 @@ import Statistics from "./views/Statistics";
 import Tags from "./views/Tags";
 import Me from "./views/Me";
 import Months from "./views/statistic/Months";
+import Daily from "views/statistic/Daily";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="me" element={<Me />} />
       </Route>
       <Route path="/statistics/months" element={<Months />} />
+      <Route path="/statistics/Daily" element={<Daily />} />
     </Routes>
   );
 }

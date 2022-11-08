@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import day from "dayjs";
 import CategorySection from "../money/CategorySection";
-import Bottom from "components/Bottom";
+import Layout from "components/Layout";
 import { useTags } from "hooks/useTags";
 
 const Div = styled.div`
@@ -69,41 +69,42 @@ const Months = () => {
   //计算当月的总金额
   monthsRecords.map((r) => (sum += r.amount));
   return (
-    <Div>
-      <CategorySection
-        value={category}
-        onChange={(value) => setCategory(value)}
-      />
-      <Header>{day(new Date()).format("YYYY年MM月")}</Header>
+    <Layout className="月统计">
+      <Div>
+        <CategorySection
+          value={category}
+          onChange={(value) => setCategory(value)}
+        />
+        <Header>{day(new Date()).format("YYYY年MM月")}</Header>
 
-      <Wrapper>
-        <div className="title">
-          <div>{category === "-" ? "支出情况" : "收入情况"}</div>
-          <div>{"¥" + sum}</div>
-        </div>
-        <ol className="content">
-          {monthsRecords.length < 1 ? (
-            <div>
-              <li className="empty">没有内容</li>
-            </div>
-          ) : (
-            monthsRecords.map((item) => {
-              return (
-                <div key={item.amount}>
-                  {item.tagIds.map((tagId) => (
-                    <li key={tagId}>
-                      <div>{getName(tagId)}</div>
-                      <div>{item.amount}</div>
-                    </li>
-                  ))}
-                </div>
-              );
-            })
-          )}
-        </ol>
-      </Wrapper>
-      <Bottom />
-    </Div>
+        <Wrapper>
+          <div className="title">
+            <div>{category === "-" ? "支出情况" : "收入情况"}</div>
+            <div>{"¥" + sum}</div>
+          </div>
+          <ol className="content">
+            {monthsRecords.length < 1 ? (
+              <div>
+                <li className="empty">没有内容</li>
+              </div>
+            ) : (
+              monthsRecords.map((item) => {
+                return (
+                  <div key={item.amount}>
+                    {item.tagIds.map((tagId) => (
+                      <li key={tagId}>
+                        <div>{getName(tagId)}</div>
+                        <div>{item.amount}</div>
+                      </li>
+                    ))}
+                  </div>
+                );
+              })
+            )}
+          </ol>
+        </Wrapper>
+      </Div>
+    </Layout>
   );
 };
 

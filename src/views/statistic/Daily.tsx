@@ -53,7 +53,7 @@ function Daily() {
   });
 
   return (
-    <Layout>
+    <Layout className="日统计">
       <CategoryWrapper>
         <CategorySection
           value={category}
@@ -90,4 +90,4 @@ function Daily() {
   );
 }
 
-export { Daily };
+export default Daily;
