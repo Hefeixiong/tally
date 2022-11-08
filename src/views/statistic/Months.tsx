@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import day from "dayjs";
 import CategorySection from "../money/CategorySection";
+import Bottom from "components/Bottom";
 import { useTags } from "hooks/useTags";
 
 const Div = styled.div`
@@ -101,6 +102,7 @@ const Months = () => {
           )}
         </ol>
       </Wrapper>
+      <Bottom />
     </Div>
   );
 };
